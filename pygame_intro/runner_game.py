@@ -8,6 +8,10 @@ screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 
+# SUR
+sky_surface = pygame.image.load('graphics/Sky.png')
+ground_surface = pygame.image.load('graphics/ground.png')
+
 
 # RUN
 while True:
@@ -17,6 +21,9 @@ while True:
             exit()
 
         # Draw all our elements
+        screen.blit(sky_surface, (0, 0))
+        screen.blit(ground_surface, (0, 240))
+
         # Update everything
 
         pygame.display.update()
