@@ -32,6 +32,9 @@ player_surf = pygame.image.load(
     'graphics/Player/player_walk_1.png').convert_alpha()
 player_rect = player_surf.get_rect(midbottom=(80, 300))
 
+# Physics
+player_gravity = 0
+
 
 # RUN
 while True:
@@ -45,25 +48,27 @@ while True:
         if event.type == pygame.KEYUP:
             print('key up')
 
+    # bg
     screen.blit(sky_surf, (0, 0))
     screen.blit(ground_surf, (0, 300))
+
+    # bg score
     pygame.draw.rect(screen, box_color, score_rect)
     pygame.draw.rect(screen, box_color, score_rect, 10)
     screen.blit(score_surf, score_rect)
 
+    # snail
     snail_rect.x -= 4
     if snail_rect.right <= 0:
         snail_rect.left = 800
 
     screen.blit(snail_surf, (snail_rect))
+
+    # player
+    player_gravity += 1
+    player_rect.y += player_gravity
     screen.blit(player_surf, (player_rect))
 
-    # CONTROLS
-    # keys = pygame.key.get_pressed()
-    # if keys[pygame.K_SPACE]:
-    #     print('jump')
-
-    # COLLIDE
-
+    # run
     pygame.display.update()
     clock.tick(60)
