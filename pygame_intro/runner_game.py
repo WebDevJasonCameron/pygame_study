@@ -12,13 +12,13 @@ clock = pygame.time.Clock()
 test_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 
 # BAK
-sky_surface = pygame.image.load('graphics/Sky.png')
-ground_surface = pygame.image.load('graphics/ground.png')
+sky_surface = pygame.image.load('graphics/Sky.png').convert()
+ground_surface = pygame.image.load('graphics/ground.png').convert()
 
 text_surface = test_font.render('My game', False, 'Black')
 
 # Enemy
-snail_surface = pygame.image.load('graphics/snail/snail1.png')
+snail_surface = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_x_pos = 600
 
 
