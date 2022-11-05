@@ -12,14 +12,18 @@ clock = pygame.time.Clock()
 test_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 
 # BAK
-sky_surface = pygame.image.load('graphics/Sky.png').convert()
-ground_surface = pygame.image.load('graphics/ground.png').convert()
+sky_surf = pygame.image.load('graphics/Sky.png').convert()
+ground_surf = pygame.image.load('graphics/ground.png').convert()
 
-text_surface = test_font.render('My game', False, 'Black')
+text_surf = test_font.render('My game', False, 'Black')
 
 # Enemy
-snail_surface = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_x_pos = 600
+
+# Player
+player_surf = pygame.image.load(
+    'graphics/Player/player_walk_1.png').convert_alpha()
 
 
 # RUN
@@ -30,15 +34,15 @@ while True:
             exit()
 
     # Draw all our elements
-    screen.blit(sky_surface, (0, 0))
-    screen.blit(ground_surface, (0, 300))
-    screen.blit(text_surface, (300, 50))
+    screen.blit(sky_surf, (0, 0))
+    screen.blit(ground_surf, (0, 300))
+    screen.blit(text_surf, (300, 50))
 
     snail_x_pos += -4
     if snail_x_pos < -100:
         snail_x_pos = 850
 
-    screen.blit(snail_surface, (snail_x_pos, 250))
+    screen.blit(snail_surf, (snail_x_pos, 250))
 
     # Update everything
 
