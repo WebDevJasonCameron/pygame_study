@@ -19,11 +19,13 @@ text_surf = test_font.render('My game', False, 'Black')
 
 # Enemy
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
-snail_x_pos = 600
+snail_rect = snail_surf.get_rect(midbottom=(600, 300))
+
 
 # Player
 player_surf = pygame.image.load(
     'graphics/Player/player_walk_1.png').convert_alpha()
+player_rect = player_surf.get_rect(midbottom=(80, 300))
 
 
 # RUN
@@ -38,11 +40,12 @@ while True:
     screen.blit(ground_surf, (0, 300))
     screen.blit(text_surf, (300, 50))
 
-    snail_x_pos += -4
-    if snail_x_pos < -100:
-        snail_x_pos = 850
+    snail_rect.x -= 4
+    if snail_rect.right <= 0:
+        snail_rect.left = 800
 
-    screen.blit(snail_surf, (snail_x_pos, 250))
+    screen.blit(snail_surf, (snail_rect))
+    screen.blit(player_surf, (player_rect))
 
     # Update everything
 
