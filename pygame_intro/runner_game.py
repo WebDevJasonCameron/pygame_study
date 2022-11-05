@@ -7,16 +7,18 @@ pygame.init()
 screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
+box_color = '#c0e8ec'
 
 # TXT
-test_font = pygame.font.Font('font/Pixeltype.ttf', 50)
+text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
+text_color = (64, 64, 64)
 
 # BG
 sky_surf = pygame.image.load('graphics/Sky.png').convert()
 ground_surf = pygame.image.load('graphics/ground.png').convert()
 
 # SCORE
-score_surf = test_font.render('My game', False, 'Black')
+score_surf = text_font.render('My game', False, text_color)
 score_rect = score_surf.get_rect(center=(400, 50))
 
 
@@ -40,7 +42,8 @@ while True:
 
     screen.blit(sky_surf, (0, 0))
     screen.blit(ground_surf, (0, 300))
-
+    pygame.draw.rect(screen, box_color, score_rect)
+    pygame.draw.rect(screen, box_color, score_rect, 10)
     screen.blit(score_surf, score_rect)
 
     snail_rect.x -= 4
