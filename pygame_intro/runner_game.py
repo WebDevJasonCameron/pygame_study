@@ -11,11 +11,14 @@ clock = pygame.time.Clock()
 # TXT
 test_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 
-# BAK
+# BG
 sky_surf = pygame.image.load('graphics/Sky.png').convert()
 ground_surf = pygame.image.load('graphics/ground.png').convert()
 
-text_surf = test_font.render('My game', False, 'Black')
+# SCORE
+score_surf = test_font.render('My game', False, 'Black')
+score_rect = score_surf.get_rect(center=(400, 50))
+
 
 # Enemy
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
@@ -34,14 +37,11 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if event.type == pygame.MOUSEMOTION:
-            if player_rect.collidepoint(event.pos):
-                print('collision')
 
-    # Draw all our elements
     screen.blit(sky_surf, (0, 0))
     screen.blit(ground_surf, (0, 300))
-    screen.blit(text_surf, (300, 50))
+
+    screen.blit(score_surf, score_rect)
 
     snail_rect.x -= 4
     if snail_rect.right <= 0:
@@ -51,12 +51,6 @@ while True:
     screen.blit(player_surf, (player_rect))
 
     # COLLIDE
-    # if player_rect.colliderect(snail_rect):
-    #     print('collision')
-
-    # mouse_pos = pygame.mouse.get_pos()
-    # if player_rect.collidepoint((mouse_pos)):
-    #     print(pygame.mouse.get_pressed())
 
     pygame.display.update()
     clock.tick(60)
