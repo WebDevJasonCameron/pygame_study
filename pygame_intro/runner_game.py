@@ -39,6 +39,11 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                print('jump')
+        if event.type == pygame.KEYUP:
+            print('key up')
 
     screen.blit(sky_surf, (0, 0))
     screen.blit(ground_surf, (0, 300))
@@ -52,6 +57,11 @@ while True:
 
     screen.blit(snail_surf, (snail_rect))
     screen.blit(player_surf, (player_rect))
+
+    # CONTROLS
+    # keys = pygame.key.get_pressed()
+    # if keys[pygame.K_SPACE]:
+    #     print('jump')
 
     # COLLIDE
 
