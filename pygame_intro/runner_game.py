@@ -1,6 +1,17 @@
 import pygame
 from sys import exit
 
+# ___CREATE SCORE
+
+
+def display_score():
+    current_time = pygame.time.get_ticks()
+    print(current_time)
+
+
+# ___CREATE GAME
+
+
 pygame.init()
 
 # SET
@@ -19,8 +30,8 @@ sky_surf = pygame.image.load('graphics/Sky.png').convert()
 ground_surf = pygame.image.load('graphics/ground.png').convert()
 
 # SCORE
-score_surf = text_font.render('My game', False, text_color)
-score_rect = score_surf.get_rect(center=(400, 50))
+# score_surf = text_font.render('My game', False, text_color)
+# score_rect = score_surf.get_rect(center=(400, 50))
 
 
 # Enemy
@@ -63,9 +74,10 @@ while True:
         screen.blit(ground_surf, (0, 300))
 
         # bg score
-        pygame.draw.rect(screen, box_color, score_rect)
-        pygame.draw.rect(screen, box_color, score_rect, 10)
-        screen.blit(score_surf, score_rect)
+        # pygame.draw.rect(screen, box_color, score_rect)
+        # pygame.draw.rect(screen, box_color, score_rect, 10)
+        # screen.blit(score_surf, score_rect)
+        display_score()
 
         # snail
         snail_rect.x -= 4
