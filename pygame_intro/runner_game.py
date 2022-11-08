@@ -5,8 +5,8 @@ from sys import exit
 
 
 def display_score():
-    current_time = pygame.time.get_ticks()
-    score_surf = text_font.render(f'{current_time}', False, text_color)
+    current_time = int(pygame.time.get_ticks() / 1000) - start_time
+    score_surf = text_font.render(f'Score: {current_time}', False, text_color)
     score_rect = score_surf.get_rect(center=(400, 50))
     screen.blit(score_surf, score_rect)
 
@@ -20,6 +20,7 @@ pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 box_color = '#c0e8ec'
 game_active = True
+start_time = 0
 
 # TXT
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
@@ -67,6 +68,7 @@ while True:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 game_active = True
                 snail_rect.left = 800
+                start_time = int(pygame.time.get_ticks() / 1000)
 
     if game_active:
         # bg
