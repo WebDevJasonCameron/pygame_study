@@ -1,17 +1,17 @@
 import pygame
 from sys import exit
 
-# ___CREATE SCORE
+# CREATE SCORE
 
 
 def display_score():
     current_time = pygame.time.get_ticks()
-    print(current_time)
+    score_surf = text_font.render(f'{current_time}', False, text_color)
+    score_rect = score_surf.get_rect(center=(400, 50))
+    screen.blit(score_surf, score_rect)
 
 
-# ___CREATE GAME
-
-
+# CREATE GAME
 pygame.init()
 
 # SET
