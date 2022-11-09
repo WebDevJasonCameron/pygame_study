@@ -32,15 +32,11 @@ text_color = (64, 64, 64)
 sky_surf = pygame.image.load('graphics/Sky.png').convert()
 ground_surf = pygame.image.load('graphics/ground.png').convert()
 
-# SCORE
-# score_surf = text_font.render('My game', False, text_color)
-# score_rect = score_surf.get_rect(center=(400, 50))
-
-
-# Enemy
+# Obstacles
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_rect = snail_surf.get_rect(midbottom=(600, 300))
 
+obstacle_rect_list = []
 
 # Player
 player_surf = pygame.image.load(
@@ -58,6 +54,10 @@ game_name_rect = game_name.get_rect(center=(400, 80))
 
 game_message = text_font.render('Press space to run', False, (111, 196, 169))
 game_message_rect = game_message.get_rect(center=(400, 320))
+
+# Timer
+obstacle_timer = pygame.USEREVENT + 1
+pygame.time.set_timer(obstacle_timer, 900)
 
 # Physics
 player_gravity = 0
@@ -85,6 +85,10 @@ while True:
                 start_time = int(pygame.time.get_ticks() / 1000)
 
     if game_active:
+        # active game timer
+        if event.type == obstacle_timer:
+            print('test')
+
         # bg
         screen.blit(sky_surf, (0, 0))
         screen.blit(ground_surf, (0, 300))
@@ -93,9 +97,9 @@ while True:
         score = display_score()
 
         # snail
-        snail_rect.x -= 4
-        if snail_rect.right <= 0:
-            snail_rect.left = 800
+        # snail_rect.x -= 4
+        # if snail_rect.right <= 0:
+        #     snail_rect.left = 800
 
         screen.blit(snail_surf, (snail_rect))
 
