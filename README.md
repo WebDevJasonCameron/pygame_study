@@ -12,4 +12,7 @@ This repo is simply a personal study into Python's PyGame resource. I've been in
 - [ ] Complete Zelda-like Game with Python
 - [ ] Deploy a ten minute game for my daughter to try and play
 - [ ] Become fluid enough with the language to help me better read other's code
+- [ ] Record lesson's learned in log markdown doc
 - [ ] Create the next mineCraft, sell it for twice the amount, live happily ever after
+
+##
