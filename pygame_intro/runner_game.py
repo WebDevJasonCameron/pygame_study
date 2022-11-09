@@ -9,6 +9,7 @@ def display_score():
     score_surf = text_font.render(f'Score: {current_time}', False, text_color)
     score_rect = score_surf.get_rect(center=(400, 50))
     screen.blit(score_surf, score_rect)
+    return current_time
 
 
 # CREATE GAME
@@ -21,6 +22,7 @@ clock = pygame.time.Clock()
 box_color = '#c0e8ec'
 game_active = False
 start_time = 0
+score = 0
 
 # TXT
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
@@ -88,10 +90,7 @@ while True:
         screen.blit(ground_surf, (0, 300))
 
         # bg score
-        # pygame.draw.rect(screen, box_color, score_rect)
-        # pygame.draw.rect(screen, box_color, score_rect, 10)
-        # screen.blit(score_surf, score_rect)
-        display_score()
+        score = display_score()
 
         # snail
         snail_rect.x -= 4
@@ -113,8 +112,16 @@ while True:
     else:
         screen.fill((94, 129, 162))
         screen.blit(player_stand, player_stand_rect)
+
+        score_message = text_font.render(
+            f'Your score: {score}', False, (111, 196, 169))
+        score_message_rect = score_message.get_rect(center=(400, 330))
         screen.blit(game_name, game_name_rect)
-        screen.blit(game_message, game_message_rect)
+
+        if score == 0:
+            screen.blit(game_message, game_message_rect)
+        else:
+            screen.blit(score_message, score_message_rect)
 
     # run
     pygame.display.update()
