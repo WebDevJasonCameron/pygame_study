@@ -51,6 +51,9 @@ player_stand = pygame.image.load(
 player_stand = pygame.transform.rotozoom(player_stand, 0, 2)
 player_stand_rect = player_stand.get_rect(center=(400, 200))
 
+game_name = text_font.render('Pixel Runner', False, (111, 196, 169))
+game_name_rect = game_name.get_rect(center=(400, 80))
+
 # Physics
 player_gravity = 0
 
@@ -107,6 +110,7 @@ while True:
     else:
         screen.fill((94, 129, 162))
         screen.blit(player_stand, player_stand_rect)
+        screen.blit(game_name, game_name_rect)
 
     # run
     pygame.display.update()
