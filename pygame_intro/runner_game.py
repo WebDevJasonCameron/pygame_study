@@ -36,7 +36,6 @@ ground_surf = pygame.image.load('graphics/ground.png').convert()
 # Obstacles
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_rect = snail_surf.get_rect(midbottom=(600, 300))
-
 obstacle_rect_list = []
 
 # Player
@@ -62,6 +61,19 @@ pygame.time.set_timer(obstacle_timer, 900)
 
 # Physics
 player_gravity = 0
+
+
+# Obstacles
+def obstacle_movement(obstacle_list):
+    if obstacle_list:
+        for obstacle_rect in obstacle_list:
+            obstacle_rect.x -= 5
+
+            screen.blit(snail_surf, obstacle_rect)
+
+        return obstacle_list
+    else:
+        return []
 
 
 # RUN
@@ -111,6 +123,9 @@ while True:
         if player_rect.bottom >= 300:
             player_rect.bottom = 300
         screen.blit(player_surf, (player_rect))
+
+        # obstacle movement
+        obstacle_rect_list = obstacle_movement(obstacle_rect_list)
 
         # collision
         if snail_rect.colliderect(player_rect):
