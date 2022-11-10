@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+from random import randint
 
 # CREATE SCORE
 
@@ -87,7 +88,8 @@ while True:
     if game_active:
         # active game timer
         if event.type == obstacle_timer:
-            print('test')
+            obstacle_rect_list.append(
+                snail_surf.get_rect(bottomright=(randint(900, 1100), 300)))
 
         # bg
         screen.blit(sky_surf, (0, 0))
