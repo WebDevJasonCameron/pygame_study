@@ -100,12 +100,12 @@ while True:
                 snail_rect.left = 800
                 start_time = int(pygame.time.get_ticks() / 1000)
 
-    if game_active:
-        # active game timer
-        if event.type == obstacle_timer:
+                # active game timer
+        if event.type == obstacle_timer and game_active:
             obstacle_rect_list.append(
                 snail_surf.get_rect(bottomright=(randint(900, 1100), 300)))
 
+    if game_active:
         # bg
         screen.blit(sky_surf, (0, 0))
         screen.blit(ground_surf, (0, 300))
