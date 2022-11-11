@@ -57,7 +57,7 @@ game_message_rect = game_message.get_rect(center=(400, 320))
 
 # Timer
 obstacle_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(obstacle_timer, 900)
+pygame.time.set_timer(obstacle_timer, 1500)
 
 # Physics
 player_gravity = 0
@@ -70,6 +70,9 @@ def obstacle_movement(obstacle_list):
             obstacle_rect.x -= 5
 
             screen.blit(snail_surf, obstacle_rect)
+
+        obstacle_list = [
+            obstacle for obstacle in obstacle_list if obstacle.x > -100]
 
         return obstacle_list
     else:
@@ -109,13 +112,6 @@ while True:
 
         # bg score
         score = display_score()
-
-        # snail
-        # snail_rect.x -= 4
-        # if snail_rect.right <= 0:
-        #     snail_rect.left = 800
-
-        screen.blit(snail_surf, (snail_rect))
 
         # player
         player_gravity += 1
