@@ -2,8 +2,6 @@ import pygame
 from sys import exit
 from random import randint
 
-# CREATE SCORE
-
 
 def display_score():
     current_time = int(pygame.time.get_ticks() / 1000) - start_time
@@ -11,6 +9,32 @@ def display_score():
     score_rect = score_surf.get_rect(center=(400, 50))
     screen.blit(score_surf, score_rect)
     return current_time
+
+
+def obstacle_movement(obstacle_list):
+    if obstacle_list:
+        for obstacle_rect in obstacle_list:
+            obstacle_rect.x -= 5
+
+            if obstacle_rect.bottom == 300:
+                screen.blit(snail_surf, obstacle_rect)
+            else:
+                screen.blit(fly_surf, obstacle_rect)
+
+        obstacle_list = [
+            obstacle for obstacle in obstacle_list if obstacle.x > -100]
+
+        return obstacle_list
+    else:
+        return []
+
+
+def collisions(player, obstacles):
+    if obstacles:
+        for obstacle_rect in obstacles:
+            if player.colliderect(obstacle_rect):
+                return False
+    return True
 
 
 # CREATE GAME
@@ -55,31 +79,13 @@ game_name_rect = game_name.get_rect(center=(400, 80))
 game_message = text_font.render('Press space to run', False, (111, 196, 169))
 game_message_rect = game_message.get_rect(center=(400, 320))
 
+
 # Timer
 obstacle_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(obstacle_timer, 1500)
 
 # Physics
 player_gravity = 0
-
-
-# Obstacles
-def obstacle_movement(obstacle_list):
-    if obstacle_list:
-        for obstacle_rect in obstacle_list:
-            obstacle_rect.x -= 5
-
-            if obstacle_rect.bottom == 300:
-                screen.blit(snail_surf, obstacle_rect)
-            else:
-                screen.blit(fly_surf, obstacle_rect)
-
-        obstacle_list = [
-            obstacle for obstacle in obstacle_list if obstacle.x > -100]
-
-        return obstacle_list
-    else:
-        return []
 
 
 # RUN
@@ -130,10 +136,12 @@ while True:
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
 
         # collision
+        game_active = collisions(player_rect, obstacle_rect_list)
 
     else:
         screen.fill((94, 129, 162))
         screen.blit(player_stand, player_stand_rect)
+        obstacle_rect_list.clear()
 
         score_message = text_font.render(
             f'Your score: {score}', False, (111, 196, 169))
