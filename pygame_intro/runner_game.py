@@ -37,7 +37,19 @@ def collisions(player, obstacles):
     return True
 
 
-# CREATE GAME
+def player_animation():
+    global player_surf, player_index
+
+    if player_rect.bottom < 300:
+        player_surf = player_jump
+    else:
+        player_index += 0.1
+        if player_index >= len(player_walk):
+            player_index = 0
+        player_surf = player_walk[player_index]
+
+
+        # CREATE GAME
 pygame.init()
 
 # SET
@@ -63,8 +75,15 @@ fly_surf = pygame.image.load('graphics/Fly/Fly1.png').convert_alpha()
 obstacle_rect_list = []
 
 # Player
-player_surf = pygame.image.load(
+player_walk_1 = pygame.image.load(
     'graphics/Player/player_walk_1.png').convert_alpha()
+player_walk_2 = pygame.image.load(
+    'graphics/Player/player_walk_2.png').convert_alpha()
+player_walk = [player_walk_1, player_walk_2]
+player_index = 0
+player_jump = pygame.image.load('graphics/Player/jump.png').convert_alpha
+
+player_surf = player_walk[player_index]
 player_rect = player_surf.get_rect(midbottom=(80, 300))
 
 # Intro Screen
@@ -130,6 +149,7 @@ while True:
         player_rect.y += player_gravity
         if player_rect.bottom >= 300:
             player_rect.bottom = 300
+        player_animation()
         screen.blit(player_surf, (player_rect))
 
         # obstacle movement
@@ -147,6 +167,8 @@ while True:
             f'Your score: {score}', False, (111, 196, 169))
         score_message_rect = score_message.get_rect(center=(400, 330))
         screen.blit(game_name, game_name_rect)
+        player_rect = (80, 300)
+        player_gravity = 0
 
         if score == 0:
             screen.blit(game_message, game_message_rect)
