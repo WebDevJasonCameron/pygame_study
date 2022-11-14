@@ -145,12 +145,12 @@ while True:
         score = display_score()
 
         # player
-        player_gravity += 1
-        player_rect.y += player_gravity
-        if player_rect.bottom >= 300:
-            player_rect.bottom = 300
-        player_animation()
-        screen.blit(player_surf, (player_rect))
+        # player_gravity += 1
+        # player_rect.y += player_gravity
+        # if player_rect.bottom >= 300:
+        #     player_rect.bottom = 300
+        # player_animation()
+        # screen.blit(player_surf, (player_rect))
 
         # obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
