@@ -46,10 +46,10 @@ def player_animation():
         player_index += 0.1
         if player_index >= len(player_walk):
             player_index = 0
-        player_surf = player_walk[player_index]
+        player_surf = player_walk[int(player_index)]
 
 
-        # CREATE GAME
+# CREATE GAME
 pygame.init()
 
 # SET
@@ -151,7 +151,7 @@ while True:
         if player_rect.bottom >= 300:
             player_rect.bottom = 300
         player_animation()
-        screen.blit(player_surf, (player_rect))
+        screen.blit(player_surf, player_rect)
 
         # obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
