@@ -85,6 +85,7 @@ player_jump = pygame.image.load('graphics/Player/jump.png').convert_alpha
 
 player_surf = player_walk[player_index]
 player_rect = player_surf.get_rect(midbottom=(80, 300))
+player_gravity = 0
 
 # Intro Screen
 player_stand = pygame.image.load(
@@ -145,12 +146,12 @@ while True:
         score = display_score()
 
         # player
-        # player_gravity += 1
-        # player_rect.y += player_gravity
-        # if player_rect.bottom >= 300:
-        #     player_rect.bottom = 300
-        # player_animation()
-        # screen.blit(player_surf, (player_rect))
+        player_gravity += 1
+        player_rect.y += player_gravity
+        if player_rect.bottom >= 300:
+            player_rect.bottom = 300
+        player_animation()
+        screen.blit(player_surf, (player_rect))
 
         # obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
