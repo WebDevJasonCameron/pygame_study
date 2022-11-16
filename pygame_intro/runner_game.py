@@ -3,6 +3,14 @@ from sys import exit
 from random import randint
 
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load(
+            'graphics/Player/player_walk_1.png').convert_alpha()
+        self.rect = self.image.get_rect(midbottom=(200, 300))
+
+
 def display_score():
     current_time = int(pygame.time.get_ticks() / 1000) - start_time
     score_surf = text_font.render(f'Score: {current_time}', False, text_color)
@@ -61,6 +69,8 @@ game_active = False
 start_time = 0
 score = 0
 
+player = Player()
+
 # TXT
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 text_color = (64, 64, 64)
@@ -95,7 +105,7 @@ player_walk_2 = pygame.image.load(
     'graphics/Player/player_walk_2.png').convert_alpha()
 player_walk = [player_walk_1, player_walk_2]
 player_index = 0
-player_jump = pygame.image.load('graphics/Player/jump.png').convert_alpha
+player_jump = pygame.image.load('graphics/Player/jump.png').convert_alpha()
 
 player_surf = player_walk[player_index]
 player_rect = player_surf.get_rect(midbottom=(80, 300))
