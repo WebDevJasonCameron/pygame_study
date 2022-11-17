@@ -6,8 +6,20 @@ from random import randint
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(
+
+        # importing for anim
+        player_walk_1 = pygame.image.load(
             'graphics/Player/player_walk_1.png').convert_alpha()
+        player_walk_2 = pygame.image.load(
+            'graphics/Player/player_walk_2.png').convert_alpha()
+
+        # build
+        self.player_walk = [player_walk_1, player_walk_2]
+        self.player_index = 0
+        self.player_jump = pygame.image.load(
+            'graphics/Player/jump.png').convert_alpha()
+
+        self.image = self.player_walk[self.player_index]
         self.rect = self.image.get_rect(midbottom=(200, 300))
         self.gravity = 0
 
