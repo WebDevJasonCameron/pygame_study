@@ -69,7 +69,8 @@ game_active = False
 start_time = 0
 score = 0
 
-player = Player()
+player = pygame.sprite.GroupSingle()
+player.add(Player())
 
 # TXT
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
@@ -198,6 +199,7 @@ while True:
             player_rect.bottom = 300
         player_animation()
         screen.blit(player_surf, player_rect)
+        player.draw(screen)
 
         # obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
