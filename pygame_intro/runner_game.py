@@ -139,8 +139,11 @@ game_active = False
 start_time = 0
 score = 0
 
+# Groups
 player = pygame.sprite.GroupSingle()
 player.add(Player())
+
+obstacle_group = pygame.sprite.Group()
 
 # TXT
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
@@ -233,6 +236,7 @@ while True:
         # active game timer
         if game_active:
             if event.type == obstacle_timer:
+                obstacle_group.add('fly')
                 if randint(0, 2):
                     obstacle_rect_list.append(
                         snail_surf.get_rect(bottomright=(randint(900, 1100), 300)))
