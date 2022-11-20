@@ -68,8 +68,7 @@ class Obstacle(pygame.sprite.Sprite):
 
         self.animation_index = 0
         self.image = self.frames[self.animation_index]
-        self.rect = self.image.get_rect(
-            midbottom=(random.randint(100, 200), y_pos))
+        self.rect = self.image.get_rect(midbottom=(randint(900, 1100), y_pos))
 
     def animation_state(self):
         self.animation_index += 0.1
@@ -236,7 +235,7 @@ while True:
         # active game timer
         if game_active:
             if event.type == obstacle_timer:
-                obstacle_group.add('fly')
+                obstacle_group.add(Obstacle('fly'))
                 if randint(0, 2):
                     obstacle_rect_list.append(
                         snail_surf.get_rect(bottomright=(randint(900, 1100), 300)))
