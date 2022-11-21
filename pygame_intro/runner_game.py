@@ -78,6 +78,7 @@ class Obstacle(pygame.sprite.Sprite):
 
     def update(self):
         self.animation_state()
+        self.rect.x -= 6
 
 
 def display_score():
@@ -276,6 +277,7 @@ while True:
         player.update()
 
         obstacle_group.draw(screen)
+        obstacle_group.update()
 
         # obstacle movement
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
