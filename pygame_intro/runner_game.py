@@ -24,6 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 0
 
         self.jump_player = pygame.mixer.Sound('audio/jump.mp3')
+        self.jump_player.set_volume(0.2)
 
     def player_input(self):
         keys = pygame.key.get_pressed()
@@ -154,6 +155,8 @@ box_color = '#c0e8ec'
 game_active = False
 start_time = 0
 score = 0
+bg_Music = pygame.mixer.Sound('audio/music.wav')
+bg_Music.play()
 
 # Groups
 player = pygame.sprite.GroupSingle()
