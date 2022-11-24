@@ -1,5 +1,9 @@
 # Log
 
+## 2022 11 24 | Happy Thanksgiving 
+
+Hey all, Happy Thanksgiving.  I am thankful that I can get so much done on this day.  I asked work to let me do nine hours every day for two weeks so I could take every other Friday to study code and build cool stuff.  That's 81 hours in two weeks, plus another 12 hours of study time on those Fridays.  I thought that would be a great deal cause everyone wins (I work as a Jr. Software Engineer).  The offer wasn't accepted so I am loving this time to learn more Python, build fun stuff, and really flex those creative programming skills.  Hopefully I can get through a lot of the courses before Monday!  I already have plans to get out of tutorial purgatory and challenge myself with the things I am learning.  Until then, have a wonderful holiday and don't eat too much!!! ~Cheers
+
 ## 2022 11 21 | Near Complete
 
 I'm at the stage that I can add sound to this first "game" intro tut. Afterwards, I need to provide examples to the readme. Then I want to mod it with some different graphics to make it feel like it is my own. Not that I can pass the code as my own... or really the artwork. I just want to go through the follow-along-code to see if I can understand it. Next, I will try to go through the long Zelda-like pygame tut. That will probably take me a really long time. Still... it is fun and I don't get to do much fun stuff at work. However, that is a different story for another place. ~Cheers
