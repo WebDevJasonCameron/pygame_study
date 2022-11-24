@@ -1,28 +1,10 @@
 import pygame
-import sys
-from settings import *
+pygame.init()
+font = pygame.font.Font(None, 30)
 
 
-class Game:
-    def __init__(self):
-
-        # general setup
-        pygame.init()
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        self.clock = pygame.time.Clock()
-
-    def run(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT():
-                    pygame.quit()
-                    sys.exit()
-
-            self.screen.fill('black')
-            pygame.display.update()
-            self.clock.tick(FPS)
-
-
-if __name__ == '__main__':
-    game = Game()
-    game.run()
+def debug(info, y=10, x=10):
+    display_surface = pygame.display.get_surface()
+    debug_surf = font.render(str(info), True, 'White')
+    debut_rect = debug_surf.get_rect(topleft=(x, y))
+    display_surface.blit(debug_surf, debut_rect)
