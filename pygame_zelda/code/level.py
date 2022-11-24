@@ -27,7 +27,7 @@ class Level:
             'object': import_csv_layout('../map/map_Objects.csv')
         }
         graphics = {
-            'gras': import_folder('../graphics/Grass')
+            'grass': import_folder('../graphics/Grass')
         }
 
         for style, layout in layouts.items():
@@ -40,8 +40,8 @@ class Level:
                             Tile((x, y), [self.obstacle_sprites], 'invisible')
                         if style == 'grass':
                             random_grass_image = choice(graphics['grass'])
-                            Tile((x, y), [self.visible_sprites,
-                                 self.obstacle_sprites], 'grass')
+                            Tile((x, y), [
+                                 self.visible_sprites, self.obstacle_sprites], 'grass', random_grass_image)
                         if style == 'object':
                             # create a object tile
                             pass
