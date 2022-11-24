@@ -8,11 +8,14 @@ This repo is simply a personal study into Python's PyGame resource. I've been in
 
 ## Goals
 
-- [ ] Complete Ultimate Intro to PyGame
+- [x] Complete Ultimate Intro to PyGame
 - [ ] Complete Zelda-like Game with Python
 - [ ] Deploy a ten minute game for my daughter to try and play
 - [ ] Become fluid enough with the language to help me better read other's code
 - [ ] Record lesson's learned in log markdown doc
 - [ ] Create the next mineCraft, sell it for twice the amount, live happily ever after
 
-##
+## View of Exp
+
+Completed the first intro tut on PyGame. Here is a snippet of that completion. Too bad you can't hear the music and sound effects.
+![image](pygame_readme_assets/pygame_intro_01.gif)
