@@ -24,8 +24,9 @@ class Level:
         layouts = {
             'boundary': import_csv_layout('../map/map_FloorBlocks.csv'),
             'grass': import_csv_layout('../map/map_Grass.csv'),
-            'object': import_csv_layout('../map/map_Objects.csv')
+            'object': import_csv_layout('../map/map_Objects.csv'),
         }
+
         graphics = {
             'grass': import_folder('../graphics/Grass'),
             'objects': import_folder('../graphics/objects')
@@ -43,8 +44,10 @@ class Level:
                             random_grass_image = choice(graphics['grass'])
                             Tile((x, y), [
                                  self.visible_sprites, self.obstacle_sprites], 'grass', random_grass_image)
+
                         if style == 'object':
                             surf = graphics['objects'][int(col)]
+
                             Tile((x, y), [self.visible_sprites,
                                  self.obstacle_sprites], 'object', surf)
 
@@ -60,12 +63,12 @@ class Level:
 class YSortCameraGroup(pygame.sprite.Group):
     def __init__(self):
 
-        # gen setup
+        # general setup
         super().__init__()
         self.display_surface = pygame.display.get_surface()
         self.half_width = self.display_surface.get_size()[0] // 2
         self.half_height = self.display_surface.get_size()[1] // 2
-        self.offset = pygame.math.Vector2(100, 200)
+        self.offset = pygame.math.Vector2()
 
         # creating the floor
         self.floor_surf = pygame.image.load(
@@ -82,7 +85,7 @@ class YSortCameraGroup(pygame.sprite.Group):
         floor_offset_pos = self.floor_rect.topleft - self.offset
         self.display_surface.blit(self.floor_surf, floor_offset_pos)
 
-        # set sprite offset
+        # for sprite in self.sprites():
         for sprite in sorted(self.sprites(), key=lambda sprite: sprite.rect.centery):
             offset_pos = sprite.rect.topleft - self.offset
             self.display_surface.blit(sprite.image, offset_pos)
