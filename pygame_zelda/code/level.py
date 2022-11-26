@@ -32,6 +32,9 @@ class Level:
             'objects': import_folder('../graphics/objects')
         }
 
+        for x in graphics['objects']:
+            print(x)
+
         for style, layout in layouts.items():
             for row_index, row in enumerate(layout):
                 for col_index, col in enumerate(row):
