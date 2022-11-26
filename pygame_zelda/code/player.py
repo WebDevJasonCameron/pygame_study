@@ -86,6 +86,12 @@ class Player(pygame.sprite.Sprite):
             if not 'idle' in self.status:
                 self.status = self.status + '_idle'
 
+        if self.attacking:
+            self.direction.x = 0
+            self.direction.y = 0
+            if not 'attack' in self.status:
+                self.status = self.status + '_attack'
+
     def collision(self, direction):
         if direction == 'horizontal':
             for sprite in self.obstacle_sprites:
