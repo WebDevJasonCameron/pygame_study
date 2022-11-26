@@ -1,8 +1,30 @@
 # Log
 
-## 2022 11 24 | Happy Thanksgiving 
+## 2022 11 26 | Sprite Problems
 
-Hey all, Happy Thanksgiving.  I am thankful that I can get so much done on this day.  I asked work to let me do nine hours every day for two weeks so I could take every other Friday to study code and build cool stuff.  That's 81 hours in two weeks, plus another 12 hours of study time on those Fridays.  I thought that would be a great deal cause everyone wins (I work as a Jr. Software Engineer).  The offer wasn't accepted so I am loving this time to learn more Python, build fun stuff, and really flex those creative programming skills.  Hopefully I can get through a lot of the courses before Monday!  I already have plans to get out of tutorial purgatory and challenge myself with the things I am learning.  Until then, have a wonderful holiday and don't eat too much!!! ~Cheers
+I was having the worst time with the graphic portion of the tut. Amazingly, I wasn't alone. I found a comment by Antoine THERY > > Hey !
+So im a mac user and i got stuck during the graphic part of the video (around 1:50:00), the probleme was that i was getting the worng sprites for the objects (getting statues instead of trees, etc.).
+After a bit of testing i undestood that the Mac os walk function doesnt "walk" throught the directory in the correct order so the list we're creating(image_surf) is unsorted.
+If u're struggling with the same issue, define a new list to get every images from the walk function, then sort it and iterate angain throught the sorted list.
+
+def import_folder(path):
+surface_list = []
+sorted_list = []
+
+    for _, __, img_files in walk(path):
+        for image in img_files:
+            sorted_list.append(image)
+        sorted_list.sort()
+        for img in sorted_list:
+            full_path = path + "/" + img
+            image_surf = pygame.image.load(full_path).convert_alpha()
+            surface_list.append(image_surf)
+
+It works now, i can keep enjoying your tutorial :) < <
+
+## 2022 11 24 | Happy Thanksgiving
+
+Hey all, Happy Thanksgiving. I am thankful that I can get so much done on this day. I asked work to let me do nine hours every day for two weeks so I could take every other Friday to study code and build cool stuff. That's 81 hours in two weeks, plus another 12 hours of study time on those Fridays. I thought that would be a great deal cause everyone wins (I work as a Jr. Software Engineer). The offer wasn't accepted so I am loving this time to learn more Python, build fun stuff, and really flex those creative programming skills. Hopefully I can get through a lot of the courses before Monday! I already have plans to get out of tutorial purgatory and challenge myself with the things I am learning. Until then, have a wonderful holiday and don't eat too much!!! ~Cheers
 
 ## 2022 11 21 | Near Complete
 
