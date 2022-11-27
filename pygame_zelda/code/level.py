@@ -5,6 +5,7 @@ from player import Player
 from debug import debug
 from support import *
 from random import choice
+from weapon import Weapon
 
 
 class Level:
@@ -21,6 +22,7 @@ class Level:
         self.create_map()
 
     def create_map(self):
+
         layouts = {
             'boundary': import_csv_layout('../map/map_FloorBlocks.csv'),
             'grass': import_csv_layout('../map/map_Grass.csv'),
@@ -52,7 +54,10 @@ class Level:
                                  self.obstacle_sprites], 'object', surf)
 
         self.player = Player(
-            (2000, 1430), [self.visible_sprites], self.obstacle_sprites)
+            (2000, 1430), [self.visible_sprites], self.obstacle_sprites, self.create_attack)
+
+    def create_attack(self):
+        Weapon(self.player, [self.visible_sprites])
 
     def run(self):
         # update and draw the game
