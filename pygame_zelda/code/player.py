@@ -85,10 +85,10 @@ class Player(pygame.sprite.Sprite):
             if keys[pygame.K_q] and self.can_switch_weapon:
                 self.can_switch_weapon = False
                 self.weapon_switch_time = pygame.time.get_ticks()
-                if self.weapon_index >= len(self.weapon):
-                    self.weapon_index = 0
-                else:
+                if self.weapon_index < len(self.weapon):
                     self.weapon_index += 1
+                else:
+                    self.weapon_index = 0
                 self.weapon = list(weapon_data.keys())[self.weapon_index]
 
     def move(self, speed):
