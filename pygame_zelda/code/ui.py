@@ -27,6 +27,8 @@ class UI:
 
         # drawing the bar
         pygame.draw.rect(self.display_surface, color, current_rect)
+        pygame.draw.rect(self.display_surface,
+                         UI_BORDER_COLOR, current_rect, 3)
 
     def display(self, player):
         self.show_bar(
