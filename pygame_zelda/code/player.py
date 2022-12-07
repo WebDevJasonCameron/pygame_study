@@ -97,8 +97,9 @@ class Player(pygame.sprite.Sprite):
                 self.attack_time = pygame.time.get_ticks()
 
                 style = list(magic_data.keys())[self.magic_index]
-                strength = list(magic_data.values())['strength']
-                cost = list(magic_data.values())['cost']
+                strength = list(magic_data.values())[
+                    self.magic_index]['strength']
+                cost = list(magic_data.values())[self.magic_index]['cost']
 
                 self.create_magic(style, strength, cost)
 
