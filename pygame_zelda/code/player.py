@@ -4,7 +4,7 @@ from support import import_folder
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, groups, obstacle_sprites, create_attack, destroy_attack):
+    def __init__(self, pos, groups, obstacle_sprites, create_attack, destroy_attack, create_magic):
         super().__init__(groups)
         self.image = pygame.image.load(
             '../graphics/test/player.png').convert_alpha()
@@ -33,6 +33,13 @@ class Player(pygame.sprite.Sprite):
         self.can_switch_weapon = True
         self.weapon_switch_time = None
         self.switch_duration_cooldown = 200
+
+        # magic
+        self.create_magic = create_magic
+        self.magic_index = 0
+        self.magic = list(magic_data.keys())[self.magic_index]
+        self.can_switch_magic = True
+        self.magic_switch_time = None
 
         # stats
         self.stats = {'health': 100,
@@ -88,7 +95,12 @@ class Player(pygame.sprite.Sprite):
             if keys[pygame.K_LCTRL]:
                 self.attacking = True
                 self.attack_time = pygame.time.get_ticks()
-                print('magic')
+
+                style = list(magic_data.keys())[self.magic_index]
+                strength = list(magic_data.values())['strength']
+                cost = list(magic_data.values())['cost']
+
+                self.create_magic(style, strength, cost)
 
             # weapon switch input
             if keys[pygame.K_q] and self.can_switch_weapon:
