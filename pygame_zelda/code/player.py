@@ -113,6 +113,16 @@ class Player(pygame.sprite.Sprite):
                     self.weapon_index = 0
                 self.weapon = list(weapon_data.keys())[self.weapon_index]
 
+            # magic switch input
+            if keys[pygame.K_e] and self.can_switch_magic:
+                self.can_switch_magic = False
+                self.magic_switch_time = pygame.time.get_ticks()
+                if self.magic_index < len(self.magic):
+                    self.magic_index += 1
+                else:
+                    self.magic_index = 0
+                self.magic = list(magic_data.keys())[self.magic_index]
+
     def move(self, speed):
         if self.direction.magnitude() != 0:
             self.direction = self.direction.normalize()
