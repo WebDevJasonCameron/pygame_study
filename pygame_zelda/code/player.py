@@ -117,7 +117,8 @@ class Player(pygame.sprite.Sprite):
             if keys[pygame.K_e] and self.can_switch_magic:
                 self.can_switch_magic = False
                 self.magic_switch_time = pygame.time.get_ticks()
-                if self.magic_index < len(self.magic):
+                # if self.magic_index < len(self.magic):
+                if self.magic_index < 1:
                     self.magic_index += 1
                 else:
                     self.magic_index = 0
