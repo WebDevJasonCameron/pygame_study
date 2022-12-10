@@ -40,7 +40,6 @@ class Player(pygame.sprite.Sprite):
         self.magic = list(magic_data.keys())[self.magic_index]
         self.can_switch_magic = True
         self.magic_switch_time = None
-        self.magic_switch_duration_cooldown = 200
 
         # stats
         self.stats = {'health': 100,
@@ -183,7 +182,7 @@ class Player(pygame.sprite.Sprite):
                 self.can_switch_weapon = True
 
         if not self.can_switch_magic:
-            if current_time - self.magic_switch_time >= self.magic_switch_duration_cooldown:
+            if current_time - self.magic_switch_time >= self.switch_duration_cooldown:
                 self.can_switch_magic = True
 
     def animate(self):
